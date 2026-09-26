@@ -1,0 +1,208 @@
+Form Validations:
+
+{
+      name: new FormControl(null, [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(20),
+        Validators.pattern(/^[A-Z][a-z]{2,}(?:\s[A-Z][a-z]{2,}){0,3}$/),
+      ]),
+      username: new FormControl(null, [
+        Validators.minLength(3),
+        Validators.maxLength(15),
+        Validators.pattern(/^[a-z0-9_]{3,15}$/),
+      ]),
+      email: new FormControl(null, [Validators.required, Validators.email]),
+      dateOfBirth: new FormControl(null, [Validators.required]),
+      gender: new FormControl(null, [Validators.required, Validators.pattern(/^(?:male|female)$/)]),
+      password: new FormControl(null, [
+        Validators.required,
+        Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/),
+      ]),
+      rePassword: new FormControl(null, [
+        Validators.required,
+        Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/),
+      ]),
+    },
+===========================================================================================================
+=============================================================================================================
+
+input class
+	bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body
+-----------------------------------------------------------------------------------------------------------------------
+Error in HTML
+-------------------------------------------------------------------
+<div class="flex items-start sm:items-center p-4 my-3 text-sm text-fg-danger-strong rounded-base bg-danger-soft"
+                        role="alert">
+                        <svg class="w-4 h-4 me-2 shrink-0 mt-0.5 sm:mt-0" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 11h2v5m-2 0h4m-2.592-8.5h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        <p>-Each name of Your fullName must start with a capital letter
+                            and contain only letters and spaces.</p>
+                    </div>
+
+===========================================================================================================================
+==============================================================================================================================
+============================================================================================================================
+post
+=================
+<div class="posts bg-white p-2 rounded-xl">
+
+        <div class="post-head flex p-1 items-center justify-between">
+
+            <div class="user-info p-0.5 flex gap-2 justify-between items-center">
+                <div class="user-img w-10 h-10 rounded-full border-2 border-neutral-400 p-1">
+                    <img class="w-full" src="./Images/default-profile.png" alt="">
+                </div>
+                <div class="user-name">
+                    <h1 class="text-md font-medium"> youssef </h1>
+                    <div class="text-gray-500 text-xs">
+                        <span class="mx-0.5">@usef_samir .</span>
+                        <span class="mx-0.5">10H .</span>
+                        <span class="mx-0.5">public</span>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="user-toggle-action ">
+                <button><i class="fa-solid fa-sliders cursor-pointer"></i></button>
+            </div>
+
+        </div>
+
+
+        <div class="post p-1">
+
+            <div class="post-body my-1">
+                <h4 class="text-neutral-800"> Post </h4>
+            </div>
+
+            <div class="post-img w-full h-[70vh] my-1 rounded-lg">
+                <img class="w-full h-full rounded-lg" src="./Images/route.png" alt="">
+            </div>
+
+        </div>
+
+
+        <div class="post-reactions flex justify-between items-center w-3/4 mx-auto p-1">
+
+            <button class="block w-1/3 rounded-xl p-1 hover:bg-slate-200 duration-150"> <i class="fa-regular fa-heart"></i> Like</button>
+            <button class="block w-1/3 rounded-xl p-1 hover:bg-slate-200 duration-150"> <i class="fa-regular fa-comment"></i> Comment</button>
+            <button class="block w-1/3 rounded-xl p-1 hover:bg-slate-200 duration-150"> <i class="fa-solid fa-share"></i> Share</button>
+
+        </div>
+
+    </div>
+=====================================================================================================================
+====================================================================================================================
+=================================================================================================================
+left-side
+========
+<div class="left-side-nav flex flex-row lg:flex-col flex-wrap p-2 bg-white rounded-lg  sticky top-0 left-0">
+
+    <button (click)="changeFeed($event)" [class.btn-active]="actvieState == 'community'"
+        class="block cursor-pointer px-2 py-1 my-1  rounded-xl text-lg font-bold w-1/2 lg:w-full text-start text-gray-600 hover:bg-slate-100 duration-200 ">
+        <i class="fa-solid fa-users-rays"></i>Community</button>
+    <button (click)="changeFeed($event)" [class.btn-active]="actvieState == 'feed'"
+        class="block cursor-pointer px-2 py-1 my-1  rounded-xl text-lg font-bold w-1/2 lg:w-full text-start text-gray-600 hover:bg-slate-100 duration-200 ">
+        <i class="fa-solid fa-newspaper"></i>Feed</button>
+    <button (click)="changeFeed($event)" [class.btn-active]="actvieState == 'saved'"
+        class="block cursor-pointer px-2 py-1 my-1  rounded-xl text-lg font-bold w-full text-start text-gray-600 hover:bg-slate-100 duration-200 ">
+        <i class="fa-regular fa-bookmark"></i>Saved</button>
+
+</div>
+-------------------------------------------
+ts:
+---------
+actvieState:string = 'community'
+
+  changeFeed(eventInfo:PointerEvent){
+    let targetElement = eventInfo.target as HTMLElement
+    this.actvieState = targetElement?.innerText.toLowerCase() 
+  }
+=====================================================================================================================
+====================================================================================================================
+=================================================================================================================
+comment
+====================================================================
+<div class="bg-slate-200 shadow-2xl shadow-gray-300 rounded-xl p-2">
+
+    <div class="comments-head w-full rounded-md p-2 bg-white">
+        <h1 class="font-bold">Comments 2</h1>
+    </div>
+
+
+    <div class="comments-body w-full rounded-md p-2 bg-white mt-3 border-b-2 border-gray-400 my-2">
+
+        <div class="comment p-2 flex items-center justify-between">
+
+            <div class="flex gap-2">
+                <div class="comment-user-photo w-10 h-10 rounded-full p-0.5 border-2 border-gray-500">
+                    <img class="w-full h-full rounded-full" src="./Images/default-profile.png" alt="">
+                </div>
+                <div class="comment-body bg-slate-200 p-3 rounded-lg">
+                    <div class="comment-head">
+                        <h4 class="font-bold"> samy </h4>
+                        <div class="text-gray-500 text-xs">
+                            <span class="mx-0.5">@usef .</span>
+                            <span class="mx-0.5">spt 15 .</span>
+                            <span class="mx-0.5">11:17 PM</span>
+                        </div>
+                    </div>
+                    <div class="comment-info flex flex-col items-center">
+                        <p class="my-1 text-gray-600">Lorem, ipsum dolor.</p>
+                        <div class="w-32 h-32 rounded-lg">
+                            <img class="w-full h-full rounded-lg" src="./Images/route.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex gap-2 items-center justify-between">
+                <span><i class="fa-regular fa-heart"></i></span>
+                <span>20</span>
+            </div>
+        </div>
+
+    </div>
+    <div class="comments-body w-full rounded-md p-2 bg-white mt-3 border-b-2 border-gray-400 my-2">
+
+        <div class="comment p-2 flex items-center justify-between">
+
+            <div class="flex gap-2">
+                <div class="comment-user-photo w-10 h-10 rounded-full p-0.5 border-2 border-gray-500">
+                    <img class="w-full h-full rounded-full" src="./Images/default-profile.png" alt="">
+                </div>
+                <div class="comment-body bg-slate-200 p-3 rounded-lg">
+                    <div class="comment-head">
+                        <h4 class="font-bold"> samy </h4>
+                        <div class="text-gray-500 text-xs">
+                            <span class="mx-0.5">@usef .</span>
+                            <span class="mx-0.5">spt 15 .</span>
+                            <span class="mx-0.5">11:17 PM</span>
+                        </div>
+                    </div>
+                    <div class="comment-info flex flex-col items-center">
+                        <p class="my-1 text-gray-600">Lorem, ipsum dolor.</p>
+                        <div class="w-32 h-32 rounded-lg">
+                            <img class="w-full h-full rounded-lg" src="./Images/route.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex gap-2 items-center justify-between">
+                <span><i class="fa-regular fa-heart"></i></span>
+                <span>20</span>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+============================================================================================================================
+
+
