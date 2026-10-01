@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms'
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms'
 
 @Component({
   selector: 'app-login',
@@ -9,7 +9,10 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms'
 })
 export class LoginComponent {
   loginFrom : FormGroup = new FormGroup({
-    email : new FormControl (""),
-    password: new FormControl ("")
+    email : new FormControl ("" , [Validators.required, Validators.email]),
+    password: new FormControl ("" , [
+        Validators.required,
+        Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/),
+      ]),
   })
 }
