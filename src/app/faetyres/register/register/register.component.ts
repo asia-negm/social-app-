@@ -18,25 +18,25 @@ export class RegisterComponent {
     name :new FormControl(null , [
       Validators.required,
       Validators.minLength(3),
-      Validators.pattern('/^[A-Z][a-z]{2,}(?:\s[A-Z][a-z]{2,}){0,3}$/')
+      Validators.pattern(/^[A-Z][a-z]{2,}(?:\s[A-Z][a-z]{2,}){0,3}$/)
     ]),
     username:new FormControl(null , [
       Validators.required,
       Validators.minLength(3),
-      Validators.pattern('/^[A-Z][a-z]{2,}(?:\s[A-Z][a-z]{2,}){0,3}$/')
+      Validators.pattern(/^[A-Z][a-z]{2,}(?:\s[A-Z][a-z]{2,}){0,3}$/)
     ]),
     email: new FormControl(null , [Validators.email , Validators.required]),
-    dataOfBirth: new FormGroup(null ,Validators.required),
-    gender: new FormControl(null , [Validators.required , Validators.pattern('(/^(?:male|female)$/)')]),
+    dataOfBirth: new FormControl(null ,Validators.required),
+    gender: new FormControl(null , [Validators.required , Validators.pattern((/^(?:male|female)$/))]),
     password:new FormControl(null , [
       Validators.required,
-      Validators.pattern('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/')
+      Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/)
     ]),
     rePassword: new FormControl(null, [
       Validators.required,
-      Validators.pattern('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/')
+      Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/)
     ]),
-  },  );
+  }, { validators: this.comfirmPassword });
   comfirmPassword(g: AbstractControl){
   return  g.get('password')?.value === g.get('rePassword')?.value ? null : {missmatch: true}
   }
