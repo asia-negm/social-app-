@@ -1,11 +1,43 @@
-<section class="container">
+<section class="bg-gray-300 rounded-lg w-1/2 mx-auto">
   <h1 class="font-bold text-xl"> Register Form</h1>
-  <div class="container ">
+  <div class="container mx-auto">
     <form [formGroup]="registerForm" >
+
         <div class="my-2">
-          <label class="font-medium" for="userName">User_Name</label>
-          <input formControlName="username" class="px-2 py-1 rounded-lg focus:bodrder" type="text">
+          <label class="font-medium" for="userName">Full-Name</label>
+          <input formControlName="name" class="px-2 py-1 rounded-lg focus:bodrder-mainColor block w-full my-1" placeholder="Your Full Name" type="text" id="name">
         </div>
+
+        <div class="my-2">
+          <label class="font-medium" for="userName">User-Name</label>
+          <input formControlName=" username" class="px-2 py-1 rounded-lg focus:bodrder-mainColor block w-full my-1" placeholder="Your User Name" type="text" id="username">
+        </div>
+        <div class="my-2">
+          <label class="font-medium" for="userName">Email</label>
+          <input formControlName="email" class="px-2 py-1 rounded-lg focus:bodrder-mainColor block w-full my-1" placeholder="Your Email" type="email" id="email">
+        </div>
+        <div class="my-2">
+          <label class="font-medium" for="male">  Male</label>
+          <input name="gender" formControlName="gender"  value="male"  type="radio" id="male">
+          <label class="font-medium" for="female">  female</label>
+          <input name="gender" formControlName="gender"   value="female" type="radio" id="female">
+        </div>
+        <div class="my-2">
+          <label class="font-medium" for="date">Date</label>
+          <input formControlName="dataOfBirth" class="px-2 py-1 rounded-lg focus:bodrder-mainColor block w-full my-1"  type="date" id="date">
+        </div>
+        <div class="my-2">
+          <label class="font-medium" for="pass">Paasword</label>
+          <input formControlName="password" class="px-2 py-1 rounded-lg focus:bodrder-mainColor block w-full my-1" placeholder="Your Password" type="text" id="pass">
+        </div>
+        <div class="my-2">
+          <label class="font-medium" for="repass">Comform Password</label>
+          <input formControlName="rePassword" class="px-2 py-1 rounded-lg focus:bodrder-mainColor block w-full my-1" placeholder="Your RePassword" type="text" id="repass">
+        </div>
+
+
+
+        <button class="form-btn">Submit</button>
     </form>
 
   </div>

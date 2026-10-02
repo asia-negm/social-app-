@@ -36,7 +36,7 @@ export class RegisterComponent {
       Validators.required,
       Validators.pattern('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/')
     ]),
-  }, [Validators: this.comfirmPassword] );
+  },  );
   comfirmPassword(g: AbstractControl){
   return  g.get('password')?.value === g.get('rePassword')?.value ? null : {missmatch: true}
   }
