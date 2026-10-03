@@ -3,7 +3,7 @@
   <section class="bg-gray-300 rounded-lg w-1/2 mx-auto">
   <h1 class="font-bold text-xl"> Register Form</h1>
   <div class="container mx-auto">
-    <form [formGroup]="loginFrom" >
+    <form [formGroup]="loginFrom" (ngSubmit)="login()" >
 
   <div class="my-2">
           <label class="font-medium" for="userName">Email</label>
@@ -11,7 +11,7 @@
         </div>
     <div class="my-2">
           <label class="font-medium" for="pass">Paasword</label>
-          <input formControlName="password" class="px-2 py-1 rounded-lg focus:bodrder-mainColor block w-full my-1" placeholder="Your Password" type="text" id="pass">
+          <input formControlName="password" class="px-2 py-1 rounded-lg focus:bodrder-mainColor block w-full my-1" placeholder="Your Password" type="password" id="pass">
         </div>
 
 </form>

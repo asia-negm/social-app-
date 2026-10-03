@@ -14,7 +14,7 @@
           "skipTests": true
         },
         "@schematics/angular:service": {
-          "type": "server",
+          "type": "service",
           "skipTests": true
         },
         "@schematics/angular:interface": {

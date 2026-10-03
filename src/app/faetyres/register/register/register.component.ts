@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms'
-import { AuthServer } from '../../../core/services/auth/auth.server';
+import { AuthService } from '../../../core/services/Auth/auth.service';
+
 
 @Component({
   selector: 'app-register',
@@ -9,7 +10,7 @@ import { AuthServer } from '../../../core/services/auth/auth.server';
   styleUrl: './register.component.css',
 })
 export class RegisterComponent {
-  constructor(private _AuthServer:AuthServer){}
+  constructor(private _AuthService:AuthService){}
     resMassage:string  ='';
 
 
@@ -40,4 +41,20 @@ export class RegisterComponent {
   comfirmPassword(g: AbstractControl){
   return  g.get('password')?.value === g.get('rePassword')?.value ? null : {missmatch: true}
   }
+  register(){
+    console.log(this.registerForm.value)
+    if(this.registerForm.valid){
+      console.log(this.registerForm.value)
+      this._AuthService.SignUp(this.registerForm.value).subscribe({
+        next:(res)=>{
+          console.log(res);
+        },
+        error:(err)=>{
+          console.log(err)
+          this.resMassage = err.error.massage
+        }
+      })
+    }
+  }
 }
+

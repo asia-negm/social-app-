@@ -6,7 +6,7 @@ import { environment } from '../../../../environments/environment.development';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthServer {
+export class AuthService {
   private _HttpClient = inject(HttpClient)
 
   SignUp(formDate:object):Observable<any>{
@@ -15,5 +15,7 @@ export class AuthServer {
   Signin(formDate:object):Observable<any>{
     return this._HttpClient.post(`${environment.baseURL}/user/signin`, formDate)
   }
-
 }
+
+
+

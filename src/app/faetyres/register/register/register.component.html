@@ -1,7 +1,10 @@
 <section class="bg-gray-300 rounded-lg w-1/2 mx-auto">
   <h1 class="font-bold text-xl"> Register Form</h1>
-  <div class="container mx-auto">
-    <form [formGroup]="registerForm" >
+  @if(resMassage){
+    <P class="bg-rose-400 p-3 rounded-xl w-1/2 mx-auto my-2">{{resMassage}}</P>
+  }
+  <div class="container mx-auto p-2 bg-black">
+    <form [formGroup]="registerForm" (ngSubmit)="register()" >
 
         <div class="my-2">
           <label class="font-medium" for="userName">Full-Name</label>
@@ -28,11 +31,11 @@
         </div>
         <div class="my-2">
           <label class="font-medium" for="pass">Paasword</label>
-          <input formControlName="password" class="px-2 py-1 rounded-lg focus:bodrder-mainColor block w-full my-1" placeholder="Your Password" type="text" id="pass">
+          <input formControlName="password" class="px-2 py-1 rounded-lg focus:bodrder-mainColor block w-full my-1" placeholder="Your Password" type="password" id="pass">
         </div>
         <div class="my-2">
           <label class="font-medium" for="repass">Comform Password</label>
-          <input formControlName="rePassword" class="px-2 py-1 rounded-lg focus:bodrder-mainColor block w-full my-1" placeholder="Your RePassword" type="text" id="repass">
+          <input formControlName="rePassword" class="px-2 py-1 rounded-lg focus:bodrder-mainColor block w-full my-1" placeholder="Your RePassword" type="password" id="repass">
         </div>
 
 

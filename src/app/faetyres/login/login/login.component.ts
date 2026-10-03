@@ -15,4 +15,8 @@ export class LoginComponent {
         Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/),
       ]),
   })
+  login(){
+    if(this.loginFrom.valid)
+    console.log(this.loginFrom.value)
+  }
 }
