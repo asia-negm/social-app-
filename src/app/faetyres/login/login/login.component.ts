@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms'
+import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms'
+import { AuthService } from '../../../core/services/Auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -8,15 +9,30 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
   styleUrl: './login.component.css',
 })
 export class LoginComponent {
+  constructor(private _AuthService:AuthService){}
+  resMassage:string = "" ;
+
   loginFrom : FormGroup = new FormGroup({
     email : new FormControl ("" , [Validators.required, Validators.email]),
     password: new FormControl ("" , [
         Validators.required,
         Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/),
       ]),
-  })
+  }, { validators: this.comfirmPassword });
+  comfirmPassword(g: AbstractControl){
+  return  g.get('password')?.value === g.get('rePassword')?.value ? null : {missmatch: true}
+}
   login(){
-    if(this.loginFrom.valid)
-    console.log(this.loginFrom.value)
+    if(this.loginFrom.valid){
+      this._AuthService.Signin(this.loginFrom.value).subscribe({
+        next:(res)=>{
+          console.log(res);
+        },
+        error:(err) =>{
+          this.resMassage =err.error.massage
+
+        },
+      })
+    }
   }
 }

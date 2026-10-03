@@ -35,13 +35,25 @@ export class RegisterComponent {
     ]),
     rePassword: new FormControl(null, [
       Validators.required,
-      Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/)
     ]),
   }, { validators: this.comfirmPassword });
   comfirmPassword(g: AbstractControl){
-  return  g.get('password')?.value === g.get('rePassword')?.value ? null : {missmatch: true}
+  // return  g.get('password')?.value === g.get('rePassword')?.value ? null : {missmatch: true}
+  const password = g.get('password')?.value;
+  const rePassword = g.get('rePassword')?.value;
+  if (password !== rePassword && rePassword !== ''){
+    g.get('rePassword')?.setErrors({missmatch: true})
+
+    return {missmatch:true}
+  }else {
+    return null ;
+  }
   }
   register(){
+     console.log('Valid?', this.registerForm.valid)
+  console.log('Errors:', this.registerForm.errors)
+  console.log('Name errors:', this.registerForm.get('name')?.errors)
+  console.log('Username errors:', this.registerForm.get('username')?.errors)
     console.log(this.registerForm.value)
     if(this.registerForm.valid){
       console.log(this.registerForm.value)
@@ -51,7 +63,7 @@ export class RegisterComponent {
         },
         error:(err)=>{
           console.log(err)
-          this.resMassage = err.error.massage
+          this.resMassage = err.error.message
         }
       })
     }

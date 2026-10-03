@@ -3,21 +3,85 @@
   @if(resMassage){
     <P class="bg-rose-400 p-3 rounded-xl w-1/2 mx-auto my-2">{{resMassage}}</P>
   }
-  <div class="container mx-auto p-2 bg-black">
+  <div class="container mx-auto p-2">
     <form [formGroup]="registerForm" (ngSubmit)="register()" >
 
         <div class="my-2">
           <label class="font-medium" for="userName">Full-Name</label>
           <input formControlName="name" class="px-2 py-1 rounded-lg focus:bodrder-mainColor block w-full my-1" placeholder="Your Full Name" type="text" id="name">
+
+         @if(registerForm.get('name')?.invalid && registerForm.get('name')?.touched){
+        <div class="flex p-4 mb-4 text-sm text-fg-danger-strong rounded-base bg-danger-soft border border-danger-subtle" role="alert">
+  <svg class="w-4 h-4 me-2 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11h2v5m-2 0h4m-2.592-8.5h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
+  <span class="sr-only">Danger</span>
+  <div>
+    <span class="font-medium">Ensure that these requirements are met:</span>
+
+      <ul class="mt-2 list-disc list-outside space-y-1 ps-2.5">
+        @if(registerForm.get('name')?.hasError('required')){
+          <li>At least 10 characters (and up to 100 characters)</li>
+        }
+        @else if(registerForm.get('name')?.hasError('Validators')){
+          <li>At least one lowercase character</li>
+        }
+        @else if(registerForm.get('name')?.hasError('Validators')){
+          <li>Inclusion of at least one special character, e.g., ! @ # ?</li>
+        }
+
+    </ul>
+  </div>
+</div>
+
+         }
         </div>
+
 
         <div class="my-2">
           <label class="font-medium" for="userName">User-Name</label>
           <input formControlName="username" class="px-2 py-1 rounded-lg focus:bodrder-mainColor block w-full my-1" placeholder="Your User Name" type="text" id="username">
+                   @if(registerForm.get('username')?.invalid && registerForm.get('username')?.touched){
+        <div class="flex p-4 mb-4 text-sm text-fg-danger-strong rounded-base bg-danger-soft border border-danger-subtle" role="alert">
+  <svg class="w-4 h-4 me-2 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11h2v5m-2 0h4m-2.592-8.5h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
+  <span class="sr-only">Danger</span>
+  <div>
+    <span class="font-medium">Ensure that these requirements are met:</span>
+
+      <ul class="mt-2 list-disc list-outside space-y-1 ps-2.5">
+        @if(registerForm.get('password')?.hasError('required')){
+          <li>At least 10 characters (and up to 100 characters)</li>
+        }
+        @else if(registerForm.get('password')?.hasError('minLength(3)')){
+          <li>At least one lowercase character</li>
+        }
+        @else if(registerForm.get('password')?.hasError('pattern')){
+          <li>not corrcted</li>
+        }
+    </ul>
+  </div>
+</div>
+
+         }
         </div>
         <div class="my-2">
           <label class="font-medium" for="userName">Email</label>
           <input formControlName="email" class="px-2 py-1 rounded-lg focus:bodrder-mainColor block w-full my-1" placeholder="Your Email" type="email" id="email">
+    @if(registerForm.get('email')?.invalid && registerForm.get('email')?.touched){
+      <div class="flex p-4 mb-4 text-sm text-fg-danger-strong rounded-base bg-danger-soft border border-danger-subtle" role="alert">
+<svg class="w-4 h-4 me-2 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11h2v5m-2 0h4m-2.592-8.5h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
+<span class="sr-only">Danger</span>
+<div>
+<span class="font-medium">Ensure that these requirements are met:</span>
+  <ul class="mt-2 list-disc list-outside space-y-1 ps-2.5">
+    @if(registerForm.get('email')?.hasError('required')){
+      <li>At least 10 characters (and up to 100 characters)</li>
+    }@else if (registerForm.get('email')?.hasError('email')){
+      <li>At least one lowercase character</li>
+    }
+</ul>
+</div>
+</div>
+
+    }
         </div>
         <div class="my-2">
           <label class="font-medium" for="male">  Male</label>
@@ -32,10 +96,48 @@
         <div class="my-2">
           <label class="font-medium" for="pass">Paasword</label>
           <input formControlName="password" class="px-2 py-1 rounded-lg focus:bodrder-mainColor block w-full my-1" placeholder="Your Password" type="password" id="pass">
+            @if(registerForm.get('password')?.invalid && registerForm.get('password')?.touched){
+        <div class="flex p-4 mb-4 text-sm text-fg-danger-strong rounded-base bg-danger-soft border border-danger-subtle" role="alert">
+  <svg class="w-4 h-4 me-2 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11h2v5m-2 0h4m-2.592-8.5h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
+  <span class="sr-only">Danger</span>
+  <div>
+    <span class="font-medium">Ensure that these requirements are met:</span>
+
+      <ul class="mt-2 list-disc list-outside space-y-1 ps-2.5">
+        @if(registerForm.get('password')?.hasError('required')){
+          <li>At least 10 characters (and up to 100 characters)</li>
+        }
+        @else if(registerForm.get('password')?.hasError('pattern')){
+          <li>At least one lowercase character</li>
+        }
+    </ul>
+  </div>
+</div>
+
+         }
         </div>
         <div class="my-2">
-          <label class="font-medium" for="repass">Comform Password</label>
+          <label class="font-medium" for="repass">Comfirm Password</label>
           <input formControlName="rePassword" class="px-2 py-1 rounded-lg focus:bodrder-mainColor block w-full my-1" placeholder="Your RePassword" type="password" id="repass">
+              @if(registerForm.get(' rePassword')?.invalid && registerForm.get(' rePassword')?.touched){
+        <div class="flex p-4 mb-4 text-sm text-fg-danger-strong rounded-base bg-danger-soft border border-danger-subtle" role="alert">
+  <svg class="w-4 h-4 me-2 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11h2v5m-2 0h4m-2.592-8.5h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
+  <span class="sr-only">Danger</span>
+  <div>
+    <span class="font-medium">Ensure that these requirements are met:</span>
+
+      <ul class="mt-2 list-disc list-outside space-y-1 ps-2.5">
+        @if(registerForm.get(' rePassword')?.hasError('required')){
+          <li>comfirm password</li>
+        }
+        @else if(registerForm.get(' rePassword')?.hasError('missmatch')){
+          <li>Password dont match</li>
+        }
+    </ul>
+  </div>
+</div>
+
+         }
         </div>
 
 
