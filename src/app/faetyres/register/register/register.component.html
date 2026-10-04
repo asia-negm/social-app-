@@ -13,7 +13,7 @@
 
         <div class="my-2 relative">
           <span class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"><i class="fa-regular fa-user"></i></span>
-          <input formControlName="name" class="px-2 py-1 rounded-lg focus:bodrder-mainColor block w-full my-1" placeholder="Full name" type="text" id="name">
+          <input formControlName="name" class="w-full rounded-xl bg-slate-50 py-3 pl-11 pr-4 text-sm text-slate-800 outline-none transition bg-white border-slate-200 " placeholder="Full name" type="text" id="name">
         @if(registerForm.get('name')?.invalid && registerForm.get('name')?.touched){
         @if(registerForm.get('name')?.hasError('required')){
           <p class="mt-1 text-xs font-semibold text-rose-600">Full name is required.</p>
@@ -24,7 +24,7 @@
         </div>
         <div class="my-2 relative">
                     <span class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"><i class="fa-regular fa-at"></i></span>
-          <input formControlName="username" class="px-2 py-1 rounded-lg focus:bodrder-mainColor block w-full my-1" placeholder="Username (optional)" type="text" id="username">
+          <input formControlName="username" class="w-full rounded-xl bg-slate-50 py-3 pl-11 pr-4 text-sm text-slate-800 outline-none transition bg-white border-slate-200" placeholder="Username (optional)" type="text" id="username">
               @if(registerForm.get('username')?.invalid && registerForm.get('username')?.touched){
         @if(registerForm.get('username')?.hasError('minlength')){
           <p class="mt-1 text-xs font-semibold text-rose-600">Username must be 3-30 chars (a-z, 0-9, _).</p>
@@ -36,7 +36,7 @@
         </div>
         <div class="my-2 relative">
                     <span class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"><i class="fa-regular fa-at"></i></span>
-          <input formControlName="email" class="px-2 py-1 rounded-lg focus:bodrder-mainColor block w-full my-1" placeholder="Email address" type="email" id="email">
+          <input formControlName="email" class="w-full rounded-xl bg-slate-50 py-3 pl-11 pr-4 text-sm text-slate-800 outline-none transition bg-white border-slate-200" placeholder="Email address" type="email" id="email">
     @if(registerForm.get('email')?.invalid && registerForm.get('email')?.touched){
     @if(registerForm.get('email')?.hasError('required')){
       <p class="mt-1 text-xs font-semibold text-rose-600">Email is required.</p>
@@ -47,7 +47,7 @@
         </div>
         <div class="my-2 relative">
                     <span class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"><i class="fa-solid fa-user-group"></i></span>
-          <select id="countries" class="block w-full px-3 py-2.5 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand shadow-xs placeholder:text-body">
+          <select id="countries" class="w-full rounded-xl bg-slate-50 py-3 pl-11 pr-4 text-sm text-slate-800 outline-none transition bg-white border-slate-200">
     <option selected>Select gender</option>
     <option value="male">Male</option>
     <option value="female">Female</option>
@@ -60,7 +60,7 @@
         </div>
         <div class="my-2 relative">
                     <span class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"><i class="fa-regular fa-calendar"></i></span>
-          <input formControlName="dataOfBirth" class="px-2 py-1 rounded-lg focus:bodrder-mainColor block w-full my-1"  type="date" id="date">
+          <input formControlName="dataOfBirth" class="w-full rounded-xl bg-slate-50 py-3 pl-11 pr-4 text-sm text-slate-800 outline-none transition bg-white border-slate-200"  type="date" id="date">
                    @if(registerForm.get('dataOfBirth')?.invalid && registerForm.get('dataOfBirth')?.touched){
 
     @if(registerForm.get('dataOfBirth')?.hasError('required')){
@@ -71,7 +71,7 @@
         <div class="my-2 relative ">
                     <span class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"><i class="fa-solid fa-key"></i></span>
 
-          <input formControlName="password" class="px-2 py-1 rounded-lg focus:bodrder-mainColor block w-full my-1" placeholder="Your Password" type="password" id="pass">
+          <input formControlName="password" class="w-full rounded-xl bg-slate-50 py-3 pl-11 pr-4 text-sm text-slate-800 outline-none transition bg-white border-slate-200" placeholder="Your Password" type="password" id="pass">
             @if(registerForm.get('password')?.invalid && registerForm.get('password')?.touched){
         @if(registerForm.get('password')?.hasError('required')){
           <p class="mt-1 text-xs font-semibold text-rose-600">Password is required.</p>
@@ -84,7 +84,7 @@
         </div>
         <div class="my-2 relative">
                     <span class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"><i class="fa-solid fa-key"></i></span>
-          <input formControlName="rePassword" class="px-2 py-1 rounded-lg focus:bodrder-mainColor block w-full my-1" placeholder="Your RePassword" type="password" id="repass">
+          <input formControlName="rePassword" class="w-full rounded-xl bg-slate-50 py-3 pl-11 pr-4 text-sm text-slate-800 outline-none transition bg-white border-slate-200" placeholder="Your RePassword" type="password" id="repass">
               @if(registerForm.get(' rePassword')?.invalid && registerForm.get(' rePassword')?.touched){
         @if(registerForm.get(' rePassword')?.hasError('required')){
           <p class="mt-1 text-xs font-semibold text-rose-600">Please confirm your password.</p>
@@ -95,7 +95,7 @@
 
          }
         </div>
-        <button class="form-btn">Create New Account</button>
+        <button class="w-full rounded-xl py-3 text-base font-extrabold text-white transition disabled:opacity-50 bg-[#00298d] focus:bg-[#001f6b]">Create New Account</button>
     </form>
   </div>
 </section>
