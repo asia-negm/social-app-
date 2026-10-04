@@ -22,8 +22,8 @@ export class RegisterComponent {
       Validators.pattern(/^[A-Z][a-z]{2,}(?:\s[A-Z][a-z]{2,}){0,3}$/)
     ]),
     username:new FormControl(null , [
-      Validators.required,
       Validators.minLength(3),
+      Validators.maxLength(30),
       Validators.pattern(/^[A-Z][a-z]{2,}(?:\s[A-Z][a-z]{2,}){0,3}$/)
     ]),
     email: new FormControl(null , [Validators.email , Validators.required]),
@@ -50,11 +50,6 @@ export class RegisterComponent {
   }
   }
   register(){
-    console.log('Valid?', this.registerForm.valid)
-  console.log('Errors:', this.registerForm.errors)
-  console.log('Name errors:', this.registerForm.get('name')?.errors)
-  console.log('Username errors:', this.registerForm.get('username')?.errors)
-    console.log(this.registerForm.value)
     if(this.registerForm.valid){
       console.log(this.registerForm.value)
       this._AuthService.SignUp(this.registerForm.value).subscribe({
