@@ -63,5 +63,20 @@ export class RegisterComponent {
       })
     }
   }
+
+  // onSubmit():void{
+  //   if(!this.registerForm.valid){
+  //     this.triggrValidation();
+  //     return
+  //   }
+  //   console.log(this.registerForm.value)
+
+  // }
+  // private triggrValidation(){
+  //   Object.keys(this.registerForm.controls).forEach(field =>{
+  //     const control = this.registerForm.get(field);
+  //     control?.markAsTouched({onlySelf:true})
+  //   })
+  // }
 }
 
