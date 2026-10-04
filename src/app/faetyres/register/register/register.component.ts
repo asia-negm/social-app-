@@ -50,7 +50,7 @@ export class RegisterComponent {
   }
   }
   register(){
-     console.log('Valid?', this.registerForm.valid)
+    console.log('Valid?', this.registerForm.valid)
   console.log('Errors:', this.registerForm.errors)
   console.log('Name errors:', this.registerForm.get('name')?.errors)
   console.log('Username errors:', this.registerForm.get('username')?.errors)
@@ -59,7 +59,7 @@ export class RegisterComponent {
       console.log(this.registerForm.value)
       this._AuthService.SignUp(this.registerForm.value).subscribe({
         next:(res)=>{
-          console.log(res);
+          // if(res.success)
         },
         error:(err)=>{
           console.log(err)
