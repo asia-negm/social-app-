@@ -1,1 +1,35 @@
-<router-outlet></router-outlet>
+
+<div class="min-h-screen bg-[#f0f2f5] px-4 py-8 lg:flex lg:items-center">
+  <div class="mx-auto flex w-full max-w-6xl items-center gap-6 sm:gap-8 lg-flex-row lg:items-center lg:justify-between">
+    <section class="order-2 w-full max-w-xl lg:order-1  lg:text-left">
+      <div class="py-4">
+        <h1 class="text-5xl font-extrabold tracking-tight text-[#00298d] sm:text-6xl lg:block">Route Posts</h1>
+        <p class="text-slate-800 font-medium text-2xl">Contect with friends and the world around you on Route Posts.</p>
+      </div>
+    <div class="rounded-2xl bg-white p-4 border-[#c9d5ff] border">
+      <h6 class="text-[#00298d] text-sm font-extrabold">ABOUT ROUTE ACADEMY </h6>
+      <h5 class="text-l font-extrabold ">Egypt's Leading IT Rraining Center Since 2012</h5>
+      <p class="text-sm text-slate-700 leading-6 mt-2">Route Academy is the premier IT training center in Egypt, established in 2012. We specialize in delivering high-quality training courses in programming, web development, and application development. We've identified the unique challenges people may face when learning new technology and made efforts to provide strategies to overcome them.</p>
+    </div>
+    <div class="flex flex-row">
+      <div>
+        <p class="text-sm text-[#00298d]">2012</p>
+        <p class="text-sm text-slate-600">FOUNDED</p>
+      </div>
+
+    </div>
+  </section>
+    <section  class="order-1 w-full max-w-[430px] lg:order-2">
+      <div class="rounded-2xl bg-white p-4 sm:p-6">
+        <div class="mb-5 grid grid-cols-2 rounded-xl bg-slate-100 p-1">
+          <button type="button" class="rounded-lg py-2 text-sm font-extrabold transition text-sl hover:text-slate-800 text-slate-600">Login</button>
+          <button type="button" class="rounded-lg py-2 text-sm font-extrabold transition text-sl hover:text-slate-800  text-slate-600">Resister</button>
+        </div>
+        <div>
+          <router-outlet></router-outlet>
+        </div>
+
+      </div>
+    </section>
+  </div>
+</div>

@@ -10,7 +10,7 @@ import { AuthService } from '../../../core/services/Auth/auth.service';
 })
 export class LoginComponent {
   constructor(private _AuthService:AuthService){}
-  resMassage:string = "" ;
+  LoginMassage:string = "" ;
 
   loginFrom : FormGroup = new FormGroup({
     email : new FormControl ("" , [Validators.required, Validators.email]),
@@ -18,10 +18,8 @@ export class LoginComponent {
         Validators.required,
         Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/),
       ]),
-  }, { validators: this.comfirmPassword });
-  comfirmPassword(g: AbstractControl){
-  return  g.get('password')?.value === g.get('rePassword')?.value ? null : {missmatch: true}
-}
+  });
+
   login(){
     if(this.loginFrom.valid){
       this._AuthService.Signin(this.loginFrom.value).subscribe({
@@ -29,7 +27,7 @@ export class LoginComponent {
           console.log(res);
         },
         error:(err) =>{
-          this.resMassage =err.error.massage
+          this.LoginMassage =err.error.massage
 
         },
       })

@@ -42,9 +42,9 @@ export class RegisterComponent {
   const password = g.get('password')?.value;
   const rePassword = g.get('rePassword')?.value;
   if (password !== rePassword && rePassword !== ''){
-    g.get('rePassword')?.setErrors({missmatch: true})
+    g.get('rePassword')?.setErrors({ missmatch: true })
 
-    return {missmatch:true}
+    return { missmatch:true }
   }else {
     return null ;
   }
@@ -64,19 +64,6 @@ export class RegisterComponent {
     }
   }
 
-  // onSubmit():void{
-  //   if(!this.registerForm.valid){
-  //     this.triggrValidation();
-  //     return
-  //   }
-  //   console.log(this.registerForm.value)
 
-  // }
-  // private triggrValidation(){
-  //   Object.keys(this.registerForm.controls).forEach(field =>{
-  //     const control = this.registerForm.get(field);
-  //     control?.markAsTouched({onlySelf:true})
-  //   })
-  // }
 }
 

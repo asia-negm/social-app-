@@ -1,9 +1,9 @@
 
-  <section class="bg-white rounded-2xl w-1/2 mx-auto p-4 sm:p-6">
+  <section class="mb-4 ">
    <h2 class="font-extrabold  text-2xl text-slate-900">Log in to Route Posts </h2>
   <p class="mt-1 text-sm text-slate-500">Log in and continue your social journey.</p>
-    @if(resMassage){
-    <P class="bg-rose-400 p-3 rounded-xl w-1/2 mx-auto my-2">{{resMassage}}</P>
+    @if(LoginMassage){
+    <P class="bg-rose-400 p-3 rounded-xl w-1/2 mx-auto my-2">{{LoginMassage}}</P>
   }
   <div class="container mx-auto">
     <form [formGroup]="loginFrom" (ngSubmit)="login()" >
@@ -34,7 +34,7 @@
         </div>
 
                 <button class="w-full rounded-xl py-3 text-base font-extrabold text-white transition disabled:opacity-50 bg-[#00298d] focus:bg-[#001f6b]">Create New Account</button>
-
+                <button type="button" class="mx-auto block pt-3 text-sm font-semibold text-[#00298d] transition hover:underline"> Forgot password</button>
 
 
 </form>
