@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms'
 import { AuthService } from '../../../core/services/Auth/auth.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -10,7 +11,7 @@ import { AuthService } from '../../../core/services/Auth/auth.service';
   styleUrl: './register.component.css',
 })
 export class RegisterComponent {
-  constructor(private _AuthService:AuthService){}
+  constructor(private _AuthService:AuthService , private _Router:Router){}
     resMassage:string  ='';
 
 
@@ -54,7 +55,12 @@ export class RegisterComponent {
       console.log(this.registerForm.value)
       this._AuthService.SignUp(this.registerForm.value).subscribe({
         next:(res)=>{
-          // if(res.success)
+          if(res.success){
+            setTimeout(() =>{
+              this._Router.navigate(['/login'])
+
+            },1000)
+          }
         },
         error:(err)=>{
           console.log(err)

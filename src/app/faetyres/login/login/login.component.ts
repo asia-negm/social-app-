@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms'
 import { AuthService } from '../../../core/services/Auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,7 @@ import { AuthService } from '../../../core/services/Auth/auth.service';
   styleUrl: './login.component.css',
 })
 export class LoginComponent {
-  constructor(private _AuthService:AuthService){}
+  constructor(private _AuthService:AuthService ,private _Router:Router){}
   LoginMassage:string = "" ;
 
   loginFrom : FormGroup = new FormGroup({
@@ -24,7 +25,14 @@ export class LoginComponent {
     if(this.loginFrom.valid){
       this._AuthService.Signin(this.loginFrom.value).subscribe({
         next:(res)=>{
-          console.log(res);
+          if(res.success){
+                        localStorage.setItem('socailToken' , res.date.token)
+
+            setTimeout(() =>{
+              this._Router.navigate(['/feeds'])
+
+            },1000)
+          }
         },
         error:(err) =>{
           this.LoginMassage =err.error.massage
