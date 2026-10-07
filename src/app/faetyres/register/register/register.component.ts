@@ -28,7 +28,7 @@ export class RegisterComponent {
       Validators.pattern(/^[a-zA-Z][a-zA-Z0-9_]{2,29}$/)
     ]),
     email: new FormControl(null , [Validators.email , Validators.required]),
-    dataOfBirth: new FormControl(null ,Validators.required),
+    dateOfBirth: new FormControl(null ,Validators.required),
     gender: new FormControl(null , [Validators.required , Validators.pattern((/^(?:male|female)$/))]),
     password:new FormControl(null , [
       Validators.required,

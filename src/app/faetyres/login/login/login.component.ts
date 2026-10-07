@@ -26,7 +26,9 @@ export class LoginComponent {
       this._AuthService.Signin(this.loginFrom.value).subscribe({
         next:(res)=>{
           if(res.success){
-                        localStorage.setItem('socialToken' , res.date.token)
+
+            localStorage.setItem('socialToken' , res.date.token)
+            localStorage.setItem('userInfo' , JSON.stringify(res.data.user))
 
             setTimeout(() =>{
               this._Router.navigate(['/feeds'])
