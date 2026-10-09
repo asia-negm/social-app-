@@ -12,7 +12,7 @@ import { filter } from 'rxjs';
   styleUrl: './app.css'
 })
 export class App  implements OnInit{
-  protected readonly title = signal('social');
+  protected readonly title = signal('route-social');
   private _router= inject(Router);
   private _PLATFORM_ID = inject(PLATFORM_ID);
   private _destroyRef = inject(DestroyRef);

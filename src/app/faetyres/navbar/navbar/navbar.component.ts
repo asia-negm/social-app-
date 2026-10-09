@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal, WritableSignal } from '@angular/core';
+import { Component, inject, input, InputSignal, OnInit, signal, WritableSignal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { AuthService } from '../../../core/services/Auth/auth.service';
 
@@ -12,11 +12,14 @@ import { AuthService } from '../../../core/services/Auth/auth.service';
 export class NavbarComponent{
   private _AuthService =inject(AuthService)
 
+  flag:InputSignal<boolean> = input.required()
+
+
 
 
 
   logOut(){
-  this._AuthService
+  this._AuthService.SignOut()
   }
 
 }
