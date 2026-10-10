@@ -1,7 +1,7 @@
 <section class="bg-white p-2 rounded-xl">
 
 
-    <form>
+    <form (submit)="creatPost($event)">
         <div class="head flex items-center gap-1.5">
             <div class="user-photo w-10 h-10 p-0.5 rounded-full border-2 border-gray-400">
                 <img class="w-full h-full rounded-full" src="./Images/default-profile.png" alt="">
@@ -11,7 +11,7 @@
                     <h2 class="font-bold text-sm"> Youssef </h2>
                 </div>
                 <div class="flex items-center justify-center">
-                    <select
+                    <select [formControl]="postPrivacy"
                         class="bg-[#f0f0f0] border-gray-300 px-4 py-1 rounded-full text-sm font-medium cursor-pointer"
                         name="Privacy-settings" id="">
                         <option value="public">Public</option>
@@ -25,7 +25,7 @@
 
         <div class="body">
             <div class="mt-3">
-                <textarea name="post-content" id="post-content"
+                <textarea [formControl]="postBody" name="post-content" id="post-content"
                     class="w-full border-gray-200 rounded-lg bg-slate-100 text-lg"
                     placeholder="What's on your mind?"></textarea>
             </div>
