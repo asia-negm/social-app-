@@ -13,7 +13,9 @@ export class AuthService {
 
 
   SignOut(){
-    // this._Router
+    this._Router.navigate(['/login']);
+    localStorage.removeItem('token')
+    localStorage.removeItem('userInof')
   }
 
   SignUp(formDate:object):Observable<any>{
