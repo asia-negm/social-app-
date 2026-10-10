@@ -1,6 +1,7 @@
 export interface IPost {
   _id: string
   body: string
+  image:string
   privacy: string
   user: User
   sharedPost: any

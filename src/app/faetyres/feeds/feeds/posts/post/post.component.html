@@ -1,17 +1,73 @@
-<div class="posts bg-white p-2 rounded-xl">
+<section class="bg-white p-2 rounded-xl">
+
+
+    <form>
+        <div class="head flex items-center gap-1.5">
+            <div class="user-photo w-10 h-10 p-0.5 rounded-full border-2 border-gray-400">
+                <img class="w-full h-full rounded-full" src="./Images/default-profile.png" alt="">
+            </div>
+            <div class="user-toggle">
+                <div class="user-name my-1">
+                    <h2 class="font-bold text-sm"> Youssef </h2>
+                </div>
+                <div class="flex items-center justify-center">
+                    <select
+                        class="bg-[#f0f0f0] border-gray-300 px-4 py-1 rounded-full text-sm font-medium cursor-pointer"
+                        name="Privacy-settings" id="">
+                        <option value="public">Public</option>
+                        <option value="following">Followers</option>
+                        <option value="only_me">Only Me</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="body">
+            <div class="mt-3">
+                <textarea name="post-content" id="post-content"
+                    class="w-full border-gray-200 rounded-lg bg-slate-100 text-lg"
+                    placeholder="What's on your mind?"></textarea>
+            </div>
+            <hr />
+            <div class="post-actions flex justify-between items-center mt-1">
+                <div class="flex items-center gap-2">
+                    <label
+                        class="text-indigo flex items-center gap-1 cursor-pointer duration-150 hover:bg-[#e7f3ff] p-1.5 rounded-md"
+                        for="file"><i class="fa-solid fa-image text-xl"></i>Photo</label>
+                    <input id="file" class="hidden" type="file">
+                </div>
+
+                <div>
+                    <button
+                        class="py-1 px-4 bg-indigo text-white rounded-full hover:bg-indigo-800 cursor-pointer duration-150">
+                        Post
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+</section>
+
+    <section>
+      @for (post of posts(); track post._id) {
+        <div class="posts bg-white p-2 rounded-xl my-2">
 
         <div class="post-head flex p-1 items-center justify-between">
 
             <div class="user-info p-0.5 flex gap-2 justify-between items-center">
                 <div class="user-img w-10 h-10 rounded-full border-2 border-neutral-400 p-1">
-                    <img class="w-full" src="./Images/default-profile.png" alt="">
+                    <img class="w-full size-full rounded-full" [src]="post.user.photo" [alt]= "`${post.user.name}'s photo`" >
                 </div>
                 <div class="user-name">
-                    <h1 class="text-md font-medium"> youssef </h1>
+                    <h1 class="text-md font-medium"> {{post.user.name}} </h1>
                     <div class="text-gray-500 text-xs">
-                        <span class="mx-0.5">@usef_samir .</span>
-                        <span class="mx-0.5">10H .</span>
-                        <span class="mx-0.5">public</span>
+                        <span class="mx-0.5">{{post.user.username}} .</span>
+                        <span class="mx-0.5">{{post.createdAt}}.</span>
+                        <span class="mx-0.5">{{post.privacy}}</span>
                     </div>
 
                 </div>
@@ -25,14 +81,19 @@
 
 
         <div class="post p-1">
+          @if(post.body){
 
-            <div class="post-body my-1">
-                <h4 class="text-neutral-800"> Post </h4>
-            </div>
+                          <div class="post-body my-1">
+                              <h4 class="text-neutral-800"> {{post.body}} </h4>
+                          </div>
 
-            <div class="post-img w-full h-[70vh] my-1 rounded-lg">
-                <img class="w-full h-full rounded-lg" src="./Images/route.png" alt="">
-            </div>
+            }
+            @if(post.image){
+
+              <div class="post-img w-full h-[70vh] my-1 rounded-lg">
+                  <img class="w-full h-full rounded-lg object-cover" [src]="post.image" alt="">
+              </div>
+            }
 
         </div>
 
@@ -46,3 +107,5 @@
         </div>
 
     </div>
+      }
+    </section>
