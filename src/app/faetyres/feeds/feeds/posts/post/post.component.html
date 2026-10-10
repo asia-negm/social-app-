@@ -35,7 +35,7 @@
                     <label
                         class="text-indigo flex items-center gap-1 cursor-pointer duration-150 hover:bg-[#e7f3ff] p-1.5 rounded-md"
                         for="file"><i class="fa-solid fa-image text-xl"></i>Photo</label>
-                    <input id="file" class="hidden" type="file">
+                    <input (change)="holdImage($event)" id="file" class="hidden" type="file">
                 </div>
 
                 <div>
@@ -46,6 +46,13 @@
                     </button>
                 </div>
             </div>
+            @if(imgURl()){
+
+              <div class="fileReader">
+                <img [src]="imgURl()" alt="">
+
+              </div>
+            }
         </div>
     </form>
 
