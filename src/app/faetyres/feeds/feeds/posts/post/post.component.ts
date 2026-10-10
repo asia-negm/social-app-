@@ -50,7 +50,7 @@ export class PostComponent implements OnInit {
       this.imgURl.set(e.target?.result);
     };
   }
-  creatPost(e: SubmitEvent) {
+  creatPost(e: SubmitEvent ) {
     e.preventDefault();
     let formData = new FormData();
     if (this.imgFile) {
@@ -66,6 +66,7 @@ export class PostComponent implements OnInit {
     this._PostService.CreatPost(formData).subscribe({
       next: (res) => {
         console.log(res);
+        this.imgURl.set(null)
         this.getAllPosts();
       },
       error: (err) => {
