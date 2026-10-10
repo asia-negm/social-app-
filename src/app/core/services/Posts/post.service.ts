@@ -8,18 +8,19 @@ import { environment } from '../../../../environments/environment.development';
 })
 export class PostService {
   private _HttpClient = inject(HttpClient);
-  header:object ={
-    headers :{
-      token:localStorage.getItem('token')
+  private getHeaders() {
+  return {
+    headers: {
+      token: localStorage.getItem('token') ?? ''
     }
+  };
+}
 
-  }
+GetAllPosts():Observable<any>{
+  return this._HttpClient.get(`${environment.baseURL}/posts`, this.getHeaders())
+}
 
-  GetAllPosts():Observable<any>{
-    return this._HttpClient.get(`${environment.baseURL}/psots` ,  this.header)
-  }
-
-  CreatPost(data:FormData):Observable<any>{
-    return this._HttpClient.post(`${environment.baseURL}/psots` , data , this.header)
-  }
+CreatPost(data:FormData):Observable<any>{
+  return this._HttpClient.post(`${environment.baseURL}/posts`, data, this.getHeaders())
+}
 }

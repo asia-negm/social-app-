@@ -8,6 +8,7 @@
         <img src="./Images/route.png" class="h-9 rounded-md" alt="Flowbite Logo" />
         <span class="self-center text-xl text-heading font-semibold whitespace-nowrap">Route social</span>
     </a>
+    @if(flag()){
     <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
         <button type="button" class="flex text-sm bg-neutral-primary rounded-full md:me-0 focus:ring-4 focus:ring-neutral-tertiary" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
           <span class="sr-only">Open user menu</span>
@@ -29,7 +30,6 @@
           <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h14"/></svg>
         </button>
     </div>
-    <!-- @if(flag()){ -->
 
       <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-user">
         <ul class="font-medium flex flex-col p-3 mt-4  rounded-base md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 bg-slate-100">
@@ -46,7 +46,7 @@
 
         </ul>
       </div>
-    <!-- } -->
+    }
     </div>
 
 </nav>

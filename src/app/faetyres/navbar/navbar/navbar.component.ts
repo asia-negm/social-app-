@@ -13,7 +13,7 @@ export class NavbarComponent{
   private _AuthService =inject(AuthService);
 
 
-  // flag:InputSignal<boolean> = input.required()
+  flag:InputSignal<boolean> = input.required()
 
 
 
