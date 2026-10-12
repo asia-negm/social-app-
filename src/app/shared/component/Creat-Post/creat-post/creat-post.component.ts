@@ -12,11 +12,11 @@ import { PostService } from '../../../../core/services/Posts/post.service';
 })
 export class CreatPostComponent {
     private _PostService = inject(PostService);
- imgFile!: File;
+imgFile!: File;
   imgURl = signal<string | ArrayBuffer | null | undefined>('');
   postBody: FormControl = new FormControl();
   postPrivacy: FormControl = new FormControl('public');
- holdImage(e: Event) {
+holdImage(e: Event) {
     let imageFile = e.target as HTMLInputElement;
     if (imageFile.files && imageFile.files.length > 0) {
       console.log(imageFile.files[0]);

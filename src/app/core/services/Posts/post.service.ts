@@ -6,9 +6,8 @@ import {IPost} from '../../models/Post/ipost.interface'
 @Injectable({
   providedIn: 'root',})
 
-export class PostService implements OnInit {
+export class PostService  {
   private _HttpClient = inject(HttpClient);
-    private _PostService = inject(PostService);
   posts = signal<IPost[]>([])
 
 
@@ -22,7 +21,7 @@ export class PostService implements OnInit {
 
 GetAllPosts():Observable<any>{
   return this._HttpClient
-  .get<any>('${environment.baseURL}/posts' , this.getHeaders())
+  .get<any>(`${environment.baseURL}/posts` , this.getHeaders())
   .pipe(tap((res) => this.posts.set(res.data.posts)))
 }
 
@@ -31,7 +30,5 @@ CreatPost(data:FormData):Observable<any>{
   `${environment.baseURL}/posts`, data, this.getHeaders()
   )
 }
-ngOnInit(): void {
-  this._PostService.GetAllPosts().subscribe();
-}
+
 }
