@@ -40,12 +40,12 @@ holdImage(e: Event) {
     if (this.imgFile) {
       formData.append('image', this.imgFile);
     }
-    if (this.postBody) {
-      formData.append('body', this.postBody.value);
+const body = this.postBody.value?.trim();
+    if (body) {
+      formData.append('body', body);
     }
-    if (this.postPrivacy) {
-      formData.append('privacy', this.postPrivacy.value);
-    }
+    formData.append('privacy',this.postPrivacy.value)
+
 
     this._PostService.CreatPost(formData).subscribe({
       next: (res) => {
@@ -55,6 +55,8 @@ holdImage(e: Event) {
       },
       error: (err) => {
         console.log(err);
+          console.log(err.error);
+
       },
     });
   }
