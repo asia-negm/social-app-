@@ -14,7 +14,7 @@
                     <h1 class="text-md font-medium"> {{post.user.name}} </h1>
                     <div class="text-gray-500 text-xs">
                         <span class="mx-0.5">{{post.user.username}} .</span>
-                        <span class="mx-0.5">{{post.createdAt}}.</span>
+                        <span class="mx-0.5">{{post.createdAt |date : "short"}}.</span>
                         <span class="mx-0.5">{{post.privacy}}</span>
                     </div>
 

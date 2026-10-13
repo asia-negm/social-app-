@@ -2,10 +2,11 @@ import { Component, inject } from '@angular/core';
 import { PostService } from '../../../../../core/services/Posts/post.service';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { CreatPostComponent } from '../../../../../shared/component/Creat-Post/creat-post/creat-post.component';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-post',
-  imports: [ReactiveFormsModule , CreatPostComponent ],
+  imports: [ReactiveFormsModule , CreatPostComponent ,DatePipe ],
   templateUrl: './post.component.html',
   styleUrl: './post.component.css',
 })

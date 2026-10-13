@@ -6,7 +6,7 @@ import { PostService } from '../../../../core/services/Posts/post.service';
 
 @Component({
   selector: 'app-creat-post',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule ],
   templateUrl: './creat-post.component.html',
   styleUrl: './creat-post.component.css',
 })
