@@ -3,10 +3,12 @@ import { PostService } from '../../../../../core/services/Posts/post.service';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { CreatPostComponent } from '../../../../../shared/component/Creat-Post/creat-post/creat-post.component';
 import { DatePipe } from '@angular/common';
+import { PostCommentComponent } from '../comment/post-comment/post-comment.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-post',
-  imports: [ReactiveFormsModule , CreatPostComponent ,DatePipe ],
+  imports: [ReactiveFormsModule, CreatPostComponent, DatePipe, PostCommentComponent, RouterLink],
   templateUrl: './post.component.html',
   styleUrl: './post.component.css',
 })

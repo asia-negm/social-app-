@@ -9,6 +9,7 @@ import { NotificationsComponent } from './faetyres/notifications/notifications/n
 import { WildcardComponent } from './faetyres/wildcard/wildcard/wildcard.component';
 import { authGuard } from './core/guards/auth-guard';
 import { guestGuard } from './core/guards/guest-guard';
+import { PostdetailsComponent } from './shared/PostDetails/postdetails/postdetails.component';
 
 export const routes: Routes = [
 
@@ -24,6 +25,7 @@ export const routes: Routes = [
       children:[
       {path:'feeds' ,loadComponent:()=> import('./faetyres/feeds/feeds/feeds.component').then ( (c)=>FeedsComponent) , title: 'Route-Social | Feeds'},
       {path:'profile' ,loadComponent:()=> import('./faetyres/profile/profile/profile.component').then ( (c)=>ProfileComponent) , title: 'Route-Social | Profile'  },
+      {path:'p-details' ,loadComponent:()=> import('./shared/component/Creat-Post/creat-post/creat-post.component').then ( (c)=>PostdetailsComponent) , title: 'Route-Social | Post'  },
       {path:'notification' ,loadComponent:()=> import('./faetyres/notifications/notifications/notifications.component').then ( (c)=>NotificationsComponent) , title: 'Route-Social | Notifaction'},
     ]},
     {path:"**", loadComponent:()=> import('./faetyres/wildcard/wildcard/wildcard.component').then ( (c)=>WildcardComponent) , title: 'Route-Social | Error 404'}
