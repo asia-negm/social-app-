@@ -1,6 +1,7 @@
-import { Component, OnInit, signal, WritableSignal } from '@angular/core';
+import { Component, inject, OnInit, signal, WritableSignal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IPost } from '../../../core/models/Post/ipost.interface';
+import { PostService } from '../../../core/services/Posts/post.service';
 
 @Component({
   selector: 'app-postdetails',
@@ -11,23 +12,26 @@ import { IPost } from '../../../core/models/Post/ipost.interface';
 export class PostdetailsComponent  implements OnInit{
   constructor(private _ActivatedRoute :ActivatedRoute){}
   postId:WritableSignal<string> = signal('')
+
+  private _PostService = inject(PostService)
   postData = signal<IPost>({} as IPost)
+
    ngOnInit(): void {
      this._ActivatedRoute.paramMap.subscribe( (param) =>
       this.postId.set(param.get('id')!)
     )
-    // this.getPostDetalis()
+    this.getPostDetalis()
    }
-  // getPostDetalis(){
-  //   this._postService.GetSinglepost(this.postId()).subscribe({
-  //     next:(res)=>{
-  //       console.log(res);
-  //       this.postData.set(res.data.post)
-  //     }error:(err)=>{
-  //   console.log(err);
-  //       }
-  //   )
+  getPostDetalis(){
+    this._PostService.GetSinlgePost(this.postId()).subscribe({
+      next:(res)=>{
+        console.log(res);
+        this.postData.set(res.data.post)
+      },error:(err)=>{
+    console.log(err);
+        }
 
-  //   }
-  // }
+
+    })
+  }
 }
