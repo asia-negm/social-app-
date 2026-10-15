@@ -19,11 +19,11 @@ export class PostService  {
   };
 }
 
-// GetAllPosts():Observable<any>{
-//   return this._HttpClient
-//   .get<any>(`${environment.baseURL}/posts` , this.getHeaders())
-//   .pipe(tap((res) => this.posts.set(res.data.posts)))
-// }
+GetAllPosts():Observable<any>{
+  return this._HttpClient
+  .get<any>(`${environment.baseURL}/posts` , this.getHeaders())
+  .pipe(tap((res) => this.posts.set(res.data.posts)))
+}
 
 CreatPost(data:FormData):Observable<any>{
   return this._HttpClient.post<any>(

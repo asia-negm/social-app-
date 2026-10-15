@@ -49,12 +49,14 @@
         <div class="post-reactions flex justify-between items-center w-3/4 mx-auto p-1">
 
             <button class="block w-1/3 rounded-xl p-1 hover:bg-slate-200 duration-150"> <i class="fa-regular fa-heart"></i> Like</button>
-            <button class="block w-1/3 rounded-xl p-1 hover:bg-slate-200 duration-150"> <i class="fa-regular fa-comment"></i> Comment</button>
+            <button #comm class="block w-1/3 rounded-xl p-1 hover:bg-slate-200 duration-150"> <i class="fa-regular fa-comment"></i> Comment</button>
             <button class="block w-1/3 rounded-xl p-1 hover:bg-slate-200 duration-150"> <i class="fa-solid fa-share"></i> Share</button>
 
         </div>
         <hr>
-        <app-post-comment></app-post-comment>
+        @defer (on interaction(comm)) {
+          <app-post-comment></app-post-comment>
+        }
 
     </div>
       }
