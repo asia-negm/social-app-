@@ -11,6 +11,8 @@ import { PostService } from '../../../../core/services/Posts/post.service';
   styleUrl: './creat-post.component.css',
 })
 export class CreatPostComponent {
+  savedUser = localStorage.getItem('userInfo');
+  user = this.savedUser ? JSON.parse(this.savedUser):null
 
   privacy = signal('Public')
     private _PostService = inject(PostService);

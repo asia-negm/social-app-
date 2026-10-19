@@ -19,6 +19,8 @@ export class PostService  {
   };
 }
 
+
+
 GetAllPosts():Observable<any>{
   return this._HttpClient
   .get<any>(`${environment.baseURL}/posts` , this.getHeaders())
@@ -34,4 +36,10 @@ CreatPost(data:FormData):Observable<any>{
 GetSinlgePost(postId:string):Observable<any>{
   return this._HttpClient.get(`${environment.baseURL}/posts/${postId}`)
 }
+GetFollowSuggestion():Observable<any>{
+  return this._HttpClient
+  .get<any>(`${environment.baseURL}/users/suggestions?limit=10 `, this.getHeaders())
+  .pipe(tap((res) => this.suggestions.set(res.data.suggestions)))
 }
+}
+
