@@ -11,6 +11,8 @@ import { PostService } from '../../../../core/services/Posts/post.service';
   styleUrl: './creat-post.component.css',
 })
 export class CreatPostComponent {
+
+  privacy = signal('Public')
     private _PostService = inject(PostService);
 imgFile!: File;
   imgURl = signal<string | ArrayBuffer | null | undefined>('');

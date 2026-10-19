@@ -34,6 +34,4 @@ CreatPost(data:FormData):Observable<any>{
 GetSinlgePost(postId:string):Observable<any>{
   return this._HttpClient.get(`${environment.baseURL}/posts/${postId}`)
 }
-
-
 }

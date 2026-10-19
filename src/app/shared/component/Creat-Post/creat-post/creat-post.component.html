@@ -10,15 +10,41 @@
                 <div class="user-name my-1">
                     <h2 class="font-bold text-sm"> Youssef </h2>
                 </div>
-                <div class="flex items-center justify-center">
-                    <select [formControl]="postPrivacy"
-                        class="bg-[#f0f0f0] border-gray-300 px-4 py-1 rounded-full text-sm font-medium cursor-pointer"
-                        name="Privacy-settings" id="">
-                        <option value="public">Public</option>
-                        <option value="following">Followers</option>
-                        <option value="only_me">Only Me</option>
-                    </select>
-                </div>
+              <div class="post-privacy flex items-center gap-2 bg-slate-100 rounded-full px-3 py-1 mt-1 text-sm">
+
+    <span class="text-slate-600">
+
+        @switch (privacy()) {
+
+            @case ('Public') {
+                <i class="fa-solid fa-earth-americas" aria-hidden="true"></i>
+            }
+
+            @case ('Friends') {
+                <i class="fa-solid fa-user-group" aria-hidden="true"></i>
+            }
+
+            @case ('Only me') {
+                <i class="fa-solid fa-lock" aria-hidden="true"></i>
+            }
+
+        }
+
+    </span>
+
+    <select #privacySelect
+            aria-label="Post privacy"
+            [value]="privacy()"
+            (change)="privacy.set(privacySelect.value)"
+            class="bg-transparent outline-none cursor-pointer">
+
+        <option value="Public">Public</option>
+        <option value="Friends">Friends</option>
+        <option value="Only me">Only me</option>
+
+    </select>
+
+</div>
             </div>
         </div>
 
@@ -33,19 +59,28 @@
             <div class="post-actions flex justify-between items-center mt-1">
                 <div class="flex items-center gap-2">
                     <label
-                        class="text-indigo flex items-center gap-1 cursor-pointer duration-150 hover:bg-[#e7f3ff] p-1.5 rounded-md"
-                        for="file"><i class="fa-solid fa-image text-xl"></i>Photo</label>
+                        class=" text-green-500 flex items-center gap-1 cursor-pointer duration-150 hover:bg-[#e7f3ff] p-1.5 rounded-md"
+                        for="file"><i class="fa-solid fa-image text-xl"></i>Photo/video</label>
                     <input (change)="holdImage($event)" id="file" class="hidden" type="file">
                 </div>
+                    <button type="button"
+                        class="flex items-center gap-2 p-2 text-slate-600 hover:bg-slate-100 rounded-lg">
 
-                <div>
-                    <button
-                        class="py-1 px-4 bg-indigo text-white rounded-full hover:bg-indigo-800 cursor-pointer duration-150">
-                        Post
-                        <i class="fa-solid fa-paper-plane"></i>
-                    </button>
-                </div>
-            </div>
+                    <i class="fa-regular fa-face-smile text-orange-400 text-xl"></i>
+                    <span>Feeling/activity</span>
+
+                </button>
+                <button type="button"
+                        class="ml-auto bg-blue-400 text-white px-5 py-2 rounded-lg font-bold hover:bg-blue-500 duration-150">
+
+                    Post
+                    <i class="fa-regular fa-paper-plane ml-1"></i>
+
+                </button>
+
+
+        </div>
+
             @if(imgURl()){
 
               <div class="fileReader">
