@@ -11,6 +11,8 @@ import { AuthService } from '../../../core/services/Auth/auth.service';
 })
 export class NavbarComponent{
   private _AuthService =inject(AuthService);
+  savedUser = localStorage.getItem('userInfo');
+user = this.savedUser ? JSON.parse(this.savedUser) : null;
 
 
   flag:InputSignal<boolean> = input.required()
