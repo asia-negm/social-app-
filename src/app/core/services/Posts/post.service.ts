@@ -3,13 +3,14 @@ import { inject, Injectable, OnInit, signal } from '@angular/core';
 import { Observable ,tap } from 'rxjs';
 import { environment } from '../../../../environments/environment.development';
 import {IPost} from '../../models/Post/ipost.interface'
+import { Suggestions } from '../../models/ISuggestions/suggestions.interface';
 @Injectable({
   providedIn: 'root',})
 
 export class PostService  {
   private _HttpClient = inject(HttpClient);
   posts = signal<IPost[]>([])
-
+  suggestions = signal<Suggestions[]>([])
 
   private getHeaders() {
   return {
@@ -18,8 +19,6 @@ export class PostService  {
     }
   };
 }
-
-
 
 GetAllPosts():Observable<any>{
   return this._HttpClient
@@ -38,7 +37,7 @@ GetSinlgePost(postId:string):Observable<any>{
 }
 GetFollowSuggestion():Observable<any>{
   return this._HttpClient
-  .get<any>(`${environment.baseURL}/users/suggestions?limit=10 `, this.getHeaders())
+  .get<any>(`${environment.baseURL}/users/suggestions?limit=5 `, this.getHeaders())
   .pipe(tap((res) => this.suggestions.set(res.data.suggestions)))
 }
 }

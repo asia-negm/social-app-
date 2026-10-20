@@ -29,13 +29,7 @@
 
     <div class="friends-body">
 
-        @for (friend of [
-            { name: 'menna', username: 'gbngssssb', followers: 159 },
-            { name: 'Jade', username: 'jade', followers: 117 },
-            { name: 'Galal', username: 'galalmohamed', followers: 89 },
-            { name: 'mohamed', username: 'khairy', followers: 75 },
-            { name: 'Elton Sampson', username: 'jumes', followers: 67 }
-        ]; track friend.username) {
+        @for (suggestion of suggestions();  track suggestion._id) {
 
             <div class="friend border border-slate-200 rounded-xl p-3 mt-3">
 
@@ -46,19 +40,19 @@
                         <div class="friend-img w-12 h-12 rounded-full shrink-0">
 
                             <img class="w-full h-full rounded-full object-cover"
-                                 [src]=""
-                                 [alt]="friend.name + ' photo'">
+                                 [src]="suggestion.photo"
+                                 [alt]="suggestion.name + ' photo'">
 
                         </div>
 
                         <div class="friend-name min-w-0">
 
                             <h4 class="font-bold truncate">
-                                {{ friend.name }}
+                                {{ suggestion.name }}
                             </h4>
 
                             <p class="text-slate-500 text-sm truncate">
-                                {{ '@' + friend.username }}
+                                {{ '@' + suggestion.username }}
                             </p>
 
                         </div>
@@ -66,7 +60,7 @@
                     </div>
 
                     <button type="button"
-                            [attr.aria-label]="'Follow ' + friend.name"
+                            [attr.aria-label]="'Follow ' + suggestion.name"
                             class="shrink-0 bg-blue-100 text-blue-500 text-sm font-bold rounded-full px-3 py-2 hover:bg-blue-200 duration-150">
 
                         <i class="fa-solid fa-user-plus mr-1"></i>
@@ -79,7 +73,7 @@
                 <div class="friend-followers mt-3">
 
                     <span class="bg-slate-100 text-slate-500 text-xs rounded-full px-3 py-1">
-                        {{ friend.followers }} followers
+                        {{ suggestion.followersCount }} followers
                     </span>
 
                 </div>
@@ -89,6 +83,14 @@
         }
 
     </div>
+     <button type="button"
+
+            class="w-full bg-slate-100 border border-slate-200 text-slate-600 font-bold rounded-xl p-3 mt-4 hover:bg-slate-200 duration-150 disabled:opacity-50 disabled:cursor-wait">
+
+view more
+
+    </button>
+
 
 </div>
 
