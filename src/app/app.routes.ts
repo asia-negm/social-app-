@@ -26,7 +26,7 @@ export const routes: Routes = [
       {path:'feeds' ,loadComponent:()=> import('./faetyres/feeds/feeds/feeds.component').then ( (c)=>FeedsComponent) , title: 'Route-Social | Feeds'},
       {path:'profile' ,loadComponent:()=> import('./faetyres/profile/profile/profile.component').then ( (c)=>ProfileComponent) , title: 'Route-Social | Profile'  },
       {path:'p-details/:id' ,loadComponent:()=> import('./shared/component/Creat-Post/creat-post/creat-post.component').then ( (c)=>PostdetailsComponent) , title: 'Route-Social | Post'  },
-      {path:'notification' ,loadComponent:()=> import('./faetyres/notifications/notifications/notifications.component').then ( (c)=>NotificationsComponent) , title: 'Route-Social | Notifaction'},
+      {path:'notifications' ,loadComponent:()=> import('./faetyres/notifications/notifications/notifications.component').then ( (c)=>NotificationsComponent) , title: 'Route-Social | Notifaction'},
     ]},
     {path:"**", loadComponent:()=> import('./faetyres/wildcard/wildcard/wildcard.component').then ( (c)=>WildcardComponent) , title: 'Route-Social | Error 404'}
 ];
