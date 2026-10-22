@@ -12,21 +12,21 @@
 
              <div class="flex gap-2">
                  <div class="comment-user-photo w-10 h-10 rounded-full p-0.5 border-2 border-gray-500">
-                     <img class="w-full h-full rounded-full" src="./Images/default-profile.png" alt="">
+                     <img class="w-full h-full rounded-full" [src]="comment.commentCreator.photo" alt="">
                  </div>
                  <div class="comment-body bg-slate-200 p-3 rounded-lg">
                      <div class="comment-head">
-                         <h4 class="font-bold"> samy </h4>
+                         <h4 class="font-bold"> {{comment.commentCreator.name}} </h4>
                          <div class="text-gray-500 text-xs">
-                             <span class="mx-0.5">@usef .</span>
+                             <span class="mx-0.5">{{comment.commentCreator.username}}.</span>
                              <span class="mx-0.5">spt 15 .</span>
                              <span class="mx-0.5">11:17 PM</span>
                          </div>
                      </div>
                      <div class="comment-info flex flex-col items-center">
-                         <p class="my-1 text-gray-600">Lorem, ipsum dolor.</p>
+                         <p class="my-1 text-gray-600">{{comment.content}}</p>
                          <div class="w-32 h-32 rounded-lg">
-                             <img class="w-full h-full rounded-lg" src="./Images/route.png" alt="">
+                             <img class="w-full h-full rounded-lg" [src]="" alt="">
                          </div>
                      </div>
                  </div>
@@ -34,7 +34,7 @@
 
              <div class="flex gap-2 items-center justify-between">
                  <span><i class="fa-regular fa-heart"></i></span>
-                 <span>20</span>
+                 <span>{{comment.likes}}</span>
              </div>
          </div>
 

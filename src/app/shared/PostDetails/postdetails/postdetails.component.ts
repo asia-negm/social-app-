@@ -2,10 +2,12 @@ import { Component, inject, OnInit, signal, WritableSignal } from '@angular/core
 import { ActivatedRoute } from '@angular/router';
 import { IPost } from '../../../core/models/Post/ipost.interface';
 import { PostService } from '../../../core/services/Posts/post.service';
+import { PostComponent } from '../../../faetyres/feeds/feeds/posts/post/post.component';
+import { PostCommentComponent } from '../../../faetyres/feeds/feeds/posts/comment/post-comment/post-comment.component';
 
 @Component({
   selector: 'app-postdetails',
-  imports: [],
+  imports: [PostComponent, PostCommentComponent],
   templateUrl: './postdetails.component.html',
   styleUrl: './postdetails.component.css',
 })
