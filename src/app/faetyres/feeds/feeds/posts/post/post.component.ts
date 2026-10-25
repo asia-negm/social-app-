@@ -18,6 +18,7 @@ export class PostComponent  {
   posts =this._PostService.posts;
   post = input.required<IPost>()
 
+
   ngOnInit(): void {
   this._PostService.GetAllPosts().subscribe({
     error: (err) => {
