@@ -2,7 +2,7 @@
 <app-creat-post></app-creat-post>
     <section>
       @for (post of posts(); track post._id) {
-        <div class="posts bg-white p-2 rounded-xl my-2">
+        <div class="posts bg-white p-2 rounded-xl my-2" >
 
         <div class="post-head flex p-1 items-center justify-between">
 
@@ -28,10 +28,10 @@
         </div>
 
 
-        <div [routerLink]="['/p-details' , 'post._']" class="post p-1">
+        <div [routerLink]="['/p-details' , post._id]" class="post p-1">
           @if(post.body){
 
-                          <div class="post-body my-1">
+                          <div  class="post-body my-1">
                               <h4 class="text-neutral-800"> {{post.body}} </h4>
                           </div>
 

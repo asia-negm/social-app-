@@ -1,2 +1,99 @@
-<app-post [post]="postData()" />
-<app-post-comment [postId]="postId()"/>
+<!-- <app-post [post]="postData()" />
+<app-post-comment [postId]="postId()"/> -->
+<section class="min-h-screen bg-slate-100 px-3 py-5">
+  <div class="max-w-240 mx-auto">
+
+    <a routerLink="/feeds"
+       class="inline-flex items-center gap-3 bg-white border border-slate-200
+              rounded-xl px-4 py-3 mb-5 font-semibold text-slate-700">
+      <i class="fa-solid fa-arrow-left"></i>
+      Back
+    </a>
+
+    @if (postData(); as post) {
+      <article class="bg-white border border-slate-200 rounded-2xl shadow-sm px-5 pt-5">
+
+        <!-- Author -->
+        <header class="flex items-center gap-3">
+          <img class="size-12 rounded-full object-cover"
+               [src]="post.user.photo"
+               [alt]="post.user.name">
+
+          <div class="min-w-0">
+            <h1 class="font-bold text-slate-900">
+              {{ post.user.name }}
+            </h1>
+
+            <div class="flex flex-wrap items-center gap-2 text-xs text-slate-500 mt-1">
+              <span>{{ post.user.username }}</span>
+              <span>·</span>
+              <span>{{ post.createdAt | date:'mediumDate' }}</span>
+              <span>·</span>
+              <span class="capitalize">
+                <i class="fa-solid fa-earth-americas mr-1"></i>
+                {{ post.privacy }}
+              </span>
+            </div>
+          </div>
+        </header>
+
+        <!-- Content -->
+        <div class="py-5">
+          @if (post.body) {
+            <p class="text-slate-800 leading-relaxed whitespace-pre-wrap wrap-break-word">{{ post.body }}</p>
+          }
+
+          @if (post.image) {
+            <img class="w-full max-h-150 object-contain rounded-xl mt-4 bg-slate-50"
+                 [src]="post.image"
+                 alt="Post image">
+          }
+        </div>
+
+        <!-- Counts -->
+        <div class="flex flex-wrap items-center justify-between gap-3 py-3 text-sm text-slate-500">
+          <span class="flex items-center gap-2">
+            <span class="size-6 rounded-full bg-blue-500 text-white
+                         inline-flex items-center justify-center text-xs">
+              <i class="fa-regular fa-thumbs-up"></i>
+            </span>
+            {{ post.likesCount ?? 0 }} likes
+          </span>
+
+          <div class="flex gap-4">
+            <span>{{ post.sharesCount ?? 0 }} shares</span>
+            <span>{{ post.commentsCount ?? 0 }} comments</span>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="grid grid-cols-3 border-t border-slate-200 py-1 text-slate-600">
+          <button type="button"
+                  class="flex items-center justify-center gap-2 py-3 rounded-lg hover:bg-slate-100">
+            <i class="fa-regular fa-thumbs-up text-lg"></i>
+            Like
+          </button>
+
+          <button #comm type="button"
+                  class="flex items-center justify-center gap-2 py-3 rounded-lg hover:bg-slate-100">
+            <i class="fa-regular fa-comment text-lg"></i>
+            Comment
+          </button>
+
+          <button type="button"
+                  class="flex items-center justify-center gap-2 py-3 rounded-lg hover:bg-slate-100">
+            <i class="fa-solid fa-share-nodes text-lg"></i>
+            Share
+          </button>
+        </div>
+
+        @defer (on interaction(comm)) {
+          <div class="border-t border-slate-200 py-4">
+            <app-post-comment [postId]="post._id" />
+          </div>
+        }
+
+      </article>
+    }
+  </div>
+</section>

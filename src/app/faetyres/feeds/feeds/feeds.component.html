@@ -10,7 +10,9 @@
 
     <div class="w-full md-oder-2 md:w-2/4 order-3 p-1">
   <main>
-    <app-post></app-post>
+    @for (post of posts(); track post._id) {
+  <app-post [post]="post"></app-post>
+}
   </main>
     </div>
 
